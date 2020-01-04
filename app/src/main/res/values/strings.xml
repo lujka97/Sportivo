@@ -5,4 +5,6 @@
     <string name="tab_text_2">Moje rezervacije</string>
     <string name="title_activity_reservation2">Reservation2</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="baseURL">http://192.168.1.103:5000/</string>
+    <string name="userURL">api/user/</string>
 </resources>

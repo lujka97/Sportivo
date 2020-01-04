@@ -38,7 +38,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/password" app:layout_constraintHorizontal_bias="1.0"
+            android:id="@+id/password_tv" app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintVertical_bias="0.344" android:layout_marginRight="32dp"/>
     <EditText
             android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/user" app:layout_constraintHorizontal_bias="1.0"
+            android:id="@+id/username_tv" app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintVertical_bias="0.243" android:layout_marginRight="32dp"/>
     <Button
             android:text="Prijavi se"
@@ -61,7 +61,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/login" app:layout_constraintHorizontal_bias="0.498"
+            android:id="@+id/login_btn" app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintVertical_bias="0.447" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="32dp" android:layout_marginStart="32dp" android:layout_marginRight="32dp"/>
     <TextView
@@ -70,7 +70,7 @@
             android:textColor="@android:color/holo_green_dark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/newuser"
+            android:id="@+id/newuser_tv"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
