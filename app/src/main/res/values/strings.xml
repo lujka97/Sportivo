@@ -7,4 +7,12 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="baseURL">http://192.168.1.103:5000/</string>
     <string name="userURL">api/user/</string>
+    <string-array name="SportsStringArray">
+    <item>Cageball</item>
+    <item>Futsal</item>
+    <item>Stolni tenis</item>
+    <item>Tenis</item>
+    <item>Kuglanje</item>
+    <item>Biljar</item>
+</string-array>
 </resources>
