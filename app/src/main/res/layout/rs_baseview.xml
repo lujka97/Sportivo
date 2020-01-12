@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teren broj x"
+        android:id="@+id/textView"
+        android:paddingLeft="10sp"
+        android:textSize="30sp"></TextView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_expand_more"
+        android:layout_gravity="right|center_vertical"
+        android:id="@+id/arrow"/>
+
+</FrameLayout>
