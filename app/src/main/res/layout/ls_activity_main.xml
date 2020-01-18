@@ -26,8 +26,8 @@
         android:hint="Korisničko ime"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:ems="10"
-        android:id="@+id/username_tv" />
 
+        android:id="@+id/user_tv" />
 
     <EditText
         android:layout_width="match_parent"
