@@ -25,7 +25,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:ems="10"
-        android:id="@+id/username" />
+        android:id="@+id/username_tv" />
 
 
     <EditText
@@ -34,7 +34,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:hint="Lozinka"
-        android:id="@+id/createpassword"
+        android:id="@+id/createpassword_tv"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
@@ -45,7 +45,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:hint="Potvrdi lozinku"
-        android:id="@+id/confirmpass"
+        android:id="@+id/confirmpass_tv"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
@@ -59,7 +59,7 @@
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/createuser"/>
+            android:id="@+id/createuser_btn"/>
 
     <Button
             android:text="Natrag"
@@ -71,7 +71,7 @@
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/back"/>
+            android:id="@+id/back_btn"/>
 
 
 </LinearLayout>

@@ -13,7 +13,7 @@ public class S4_Adapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return DataStorage.listViewData.size();
+        return DataStorage.companies.size();
     }
 
     @Override
@@ -39,8 +39,8 @@ public class S4_Adapter extends BaseAdapter {
         if (view == null)
             view = mInflater.inflate(R.layout.os_textlayout, viewGroup, false);
         final TextView name = (TextView) view.findViewById(R.id.name);
-        final Objects objekt = DataStorage.listViewData.get(i);
-        name.setText(objekt.getName());
+        final Objects company = DataStorage.companies.get(i);
+        name.setText(company.getName());
 
         return view;
     }

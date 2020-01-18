@@ -26,6 +26,10 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".start_screen.MainActivity"></activity>
+        <activity android:name=".objects_screen.Objects_main"></activity>
+        <activity android:name=".choice_screen.Choice"></activity>
+        <activity android:name=".reservation_screen.S5_Main"></activity>
+        <activity android:name=".time_screen.Time"></activity>
     </application>
 
 </manifest>

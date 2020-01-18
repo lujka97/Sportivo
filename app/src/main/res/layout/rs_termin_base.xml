@@ -10,14 +10,12 @@
               android:textColor="@android:color/holo_green_dark"
               />
 
-    <Spinner
-            android:id="@+id/vrijeme"
-            android:backgroundTint="@android:color/holo_green_dark"
-            android:backgroundTintMode="screen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"/>
+    <TextView
+        android:id="@+id/reservationDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:ems="10" />
 
     <ListView
             android:text="Rezervacija"

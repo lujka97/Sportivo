@@ -7,6 +7,10 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="baseURL">http://192.168.1.103:5000/</string>
     <string name="userURL">api/user/</string>
+    <string name="sportsURL">api/sport/</string>
+    <string name="companiesURL">api/company/</string>
+    <string name="reservationsURL">api/reservation/</string>
+    <string name="imagesURL">Uploads/Images/</string>
     <string-array name="SportsStringArray">
     <item>Cageball</item>
     <item>Futsal</item>

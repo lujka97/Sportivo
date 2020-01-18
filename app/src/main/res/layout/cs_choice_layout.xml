@@ -14,41 +14,48 @@
             android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin">
 
-        <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                     android:text="Pretraga po mjestu"
-                     android:textSize="26dp"
-                     android:textColor="@android:color/holo_green_dark"
-                     android:layout_margin="10dp"
-        />
-        <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                     android:text="Pretraga po terminu"
-                     android:textSize="26dp"
-                     android:layout_margin="10dp"
-                     android:textColor="@android:color/holo_green_dark"
-        />
+        <RadioButton
+            android:id="@+id/time_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Pretraga po mjestu"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="26dp" />
+
+        <RadioButton
+            android:id="@+id/place_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Pretraga po terminu"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="26dp" />
     </RadioGroup>
 
 
     <Button
-        android:text="Traži"
+        android:id="@+id/searchBy_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:textColor="@android:color/white"
-        android:background="@drawable/button_style" />
+        android:background="@drawable/button_style"
+        android:text="Traži"
+        android:textColor="@android:color/white" />
 
     <Button
-        android:text="Natrag"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:id="@+id/backChoice_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:background="@drawable/button_style"/>
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@drawable/button_style"
+        android:text="Natrag"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

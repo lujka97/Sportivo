@@ -12,8 +12,6 @@
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
               android:text="Izaberi objekt:"
               android:textSize="25dp"
-              android:layout_marginVertical="20dp"
-              android:layout_marginHorizontal="15dp"
               android:textColor="@android:color/holo_green_dark"/>
 
     <ListView
@@ -21,7 +19,7 @@
             android:layout_height="match_parent"
             android:divider="@null"
             android:dividerHeight="0dp"
-            android:id="@+id/object_list">
+            android:id="@+id/companies_list">
 
     </ListView>
 
