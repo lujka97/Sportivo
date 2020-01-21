@@ -2,6 +2,8 @@ package com.example.sportivo.time_screen;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import com.example.sportivo.R;
 import com.squareup.timessquare.CalendarPickerView;
@@ -25,7 +27,7 @@ public class Time extends AppCompatActivity {
         datepicker.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
             @Override
             public void onDateSelected(Date date) {
-
+                startActivity(new Intent(Time.this,PopUp.class));
 
                 }
 
