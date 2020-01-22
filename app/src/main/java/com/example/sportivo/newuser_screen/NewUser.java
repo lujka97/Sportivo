@@ -34,7 +34,7 @@ public class NewUser extends AppCompatActivity {
         setContentView(R.layout.nus_new_user_layout);
 
         back_btn = (Button) findViewById(R.id.back_btn);
-        username_tv = (TextView) findViewById(R.id.username_tv);
+        username_tv = (TextView) findViewById(R.id.username);
         createuser_btn = (Button) findViewById(R.id.createuser_btn);
         password_tv = (TextView) findViewById(R.id.createpassword);
         password2_tv = (TextView) findViewById(R.id.confirmpass);
