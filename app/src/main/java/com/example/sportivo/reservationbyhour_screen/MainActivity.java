@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         return availableSlotsMap;
     }
 
-    private int getCompanyIdFromCourtID(int courtId){
+    public static int getCompanyIdFromCourtID(int courtId){
 
         for (Company company : ReservationDataStorage.companies){
             for(Court court : company.getCourts()){
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
         String url = getApplicationContext().getString(R.string.baseURL) + getApplicationContext().getString(R.string.companiesURL) + "getAll?sportId=" + ReservationDataStorage.sportId;
 
-        final JsonArrayRequest getCourts = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+        final JsonArrayRequest getCompanies = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 Log.i("blabla", response.toString());
@@ -197,6 +197,9 @@ public class MainActivity extends AppCompatActivity {
                         ReservationDataStorage.availableReservations.add(entry.getValue());
                     }
                     expandableListAdapter.notifyDataSetChanged();
+                }else{
+                    ReservationDataStorage.availableReservations.clear();
+                    expandableListAdapter.notifyDataSetChanged();
                 }
 
             }
@@ -206,6 +209,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("blabla", error.toString());
             }
         });
-        Singleton.getInstance(getApplicationContext()).addToRequestQueue(getCourts);
+        Singleton.getInstance(getApplicationContext()).addToRequestQueue(getCompanies);
     }
 }

@@ -43,7 +43,7 @@ public class TimeSlot {
 
     public String getTimeOfDay(){
 
-        return String.valueOf(startsHour) + ":" + String.valueOf(startsMinutes);
+        return String.format("%02d", startsHour) + ":" + String.format("%02d",startsMinutes);
     }
 
     public String getStartTimeOfDayWithMinutes(){

@@ -68,7 +68,16 @@ public class MyExpandableListViewAdapterResByHour extends BaseExpandableListAdap
         TextView companyName_tv = (TextView) convertView.findViewById(R.id.companyName_tv);
 
         try{
-            companyName_tv.setText(ReservationDataStorage.companies.get(groupPosition).getName());
+            int id = ReservationDataStorage.availableReservations.get(groupPosition).get(0).getCourtId();
+            int companyId = MainActivity.getCompanyIdFromCourtID(id);
+
+            Company company = new Company(-1, "");
+            for (Company c : ReservationDataStorage.companies){
+                if (c.getId() == companyId){
+                    company = c;
+                }
+            }
+            companyName_tv.setText(company.getName());
 
         }catch (Error e){
 
