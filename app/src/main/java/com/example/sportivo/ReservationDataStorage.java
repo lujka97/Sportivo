@@ -9,6 +9,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.sportivo.admin_screen.AdminMainActivity;
 import com.example.sportivo.objects_screen.Company;
 
 import org.json.JSONException;
@@ -29,6 +30,7 @@ public class ReservationDataStorage {
     private static int hour, minute, second;
     private static int length = 1;
     public static String date;
+    public static boolean isAdmin;
 
     public static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
     public static ArrayList<Court> courts = new ArrayList<Court>();
@@ -98,7 +100,13 @@ public class ReservationDataStorage {
                     Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(context, "Reservation successfully created", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(context, com.example.sportivo.start_screen.MainActivity.class);
+                    Intent intent;
+                    if(ReservationDataStorage.isAdmin){
+                        intent = new Intent(context, AdminMainActivity.class);
+                    }else {
+                        intent = new Intent(context, com.example.sportivo.start_screen.MainActivity.class);
+                    }
+
                     context.startActivity(intent);
                 }
             }

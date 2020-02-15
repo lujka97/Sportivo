@@ -1,5 +1,6 @@
 package com.example.sportivo.newuser_screen;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ import org.json.JSONObject;
 public class NewUser extends AppCompatActivity {
 
     Button back_btn, createuser_btn;
-    TextView username_tv, password_tv, password2_tv;
+    TextView username_tv, password_tv, password2_tv, newOwner_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,15 @@ public class NewUser extends AppCompatActivity {
         createuser_btn = (Button) findViewById(R.id.createuser_btn);
         password_tv = (TextView) findViewById(R.id.createpassword_tv);
         password2_tv = (TextView) findViewById(R.id.confirmpass_tv);
+        newOwner_tv = (TextView) findViewById(R.id.newOwner_tv);
 
+        newOwner_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CompanyRegistration.class);
+                startActivity(intent);
+            }
+        });
 
         username_tv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -83,43 +92,14 @@ public class NewUser extends AppCompatActivity {
                 if(CheckAllRequiredFieldsFilled()){
                     final String username = username_tv.getText().toString();
                     final String password = password2_tv.getText().toString();
-
-                    String url = getString(R.string.baseURL) + getString(R.string.userURL) + "register";
-
-                    StringRequest registerUser = new StringRequest(Request.Method.POST, url,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    Toast.makeText(getApplicationContext(), "User " + username + " successfully registered", Toast.LENGTH_LONG).show();
-                                }
-                            }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
-
-                        }
-                    }){
-                        @Override
-                        public byte[] getBody() throws AuthFailureError {
-                            JSONObject user = new JSONObject();
-                            try{
-                                user.put("Username", username);
-                                user.put("Password", password);
-                            }catch(JSONException e){
-                                e.printStackTrace();
-                            }
-                            return user.toString().getBytes();
-                        }
-
-                        @Override
-                        public String getBodyContentType() {
-                            return "application/json";
-                        }
-                    };
-
-                    Singleton.getInstance(getApplicationContext()).addToRequestQueue(registerUser);
+                    JSONObject user = new JSONObject();
+                    try{
+                        user.put("Username", username);
+                        user.put("Password", password);
+                    }catch(JSONException e){
+                        e.printStackTrace();
+                    }
+                    NewUser.createUser(getApplicationContext(), user);
 
                 }
             }
@@ -140,5 +120,38 @@ public class NewUser extends AppCompatActivity {
             return false;
         }catch(Error error){return false;}
 
+    }
+
+    public static void createUser(final Context context, final JSONObject user){
+        String url = context.getString(R.string.baseURL) + context.getString(R.string.userURL) + "register";
+
+        StringRequest registerUser = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Intent intent = new Intent(context, MainActivity.class);
+                        context.startActivity(intent);
+                        Toast.makeText(context, "User " + user.optString("Username", "") + " successfully registered", Toast.LENGTH_LONG).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
+
+            }
+        }){
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+
+                return user.toString().getBytes();
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+
+        Singleton.getInstance(context).addToRequestQueue(registerUser);
     }
 }

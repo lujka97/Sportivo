@@ -3,6 +3,8 @@
     <string name="title_activity_sports">Sports</string>
     <string name="tab_text_1">Nova Rezervacija</string>
     <string name="tab_text_2">Moje rezervacije</string>
+    <string name="admin_tab_text_view_reservations">Pregled rezervacija</string>
+    <string name="admin_tab_text_add_a_reservation">Dodaj rezervaciju</string>
     <string name="title_activity_reservation2">Reservation2</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="baseURL">http://192.168.1.103:5000/</string>

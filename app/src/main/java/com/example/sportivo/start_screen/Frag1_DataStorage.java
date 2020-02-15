@@ -14,6 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.sportivo.R;
 import com.example.sportivo.Singleton;
 import com.example.sportivo.TokenManager;
+import com.example.sportivo.admin_screen.AdminReservationsDataStorage;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -29,13 +30,21 @@ public class Frag1_DataStorage {
 
         public static ArrayList<Frag1_Sports> sports = new ArrayList<Frag1_Sports>();
 
-        public static void fillData(final Context context, final Frag1_Adapter adapter) {
+        public static void fillData(final Context context, final Frag1_Adapter adapter, boolean isAdmin) {
 
-            String url = context.getString(R.string.baseURL) + context.getString(R.string.sportsURL) + "getAll";
+            String url;
+            if(isAdmin){
+                url = context.getString(R.string.baseURL) + context.getString(R.string.sportsURL) + "getAllForCompany?companyId=" + AdminReservationsDataStorage.companyId;
+            }else {
+                url = context.getString(R.string.baseURL) + context.getString(R.string.sportsURL) + "getAll";
+            }
 
             JsonArrayRequest getSports = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                 @Override
                 public void onResponse(JSONArray response) {
+
+                    Log.i("blabla", response.toString());
+
                     Gson gson = new Gson();
                     Type type = new TypeToken<List<Frag1_Sports>>(){}.getType();
                     sports = gson.fromJson(response.toString(), type);
@@ -51,10 +60,6 @@ public class Frag1_DataStorage {
 
             Singleton.getInstance(context).addToRequestQueue(getSports);
 
-            Log.i("blabla", "token: " + TokenManager.getToken());
-
         }
-
-        private static String[] names = {"Cageball", "Tenis", "Futsal", "Stolni tenis", "Biljar", "Kuglanje"};
     }
 

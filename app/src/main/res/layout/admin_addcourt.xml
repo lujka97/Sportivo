@@ -12,20 +12,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="24sp"
-        android:text="Izaberi sport: "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="24sp"
+            android:text="Izaberi sport: "/>
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:entries="@array/SportsStringArray"
-        android:theme="@style/spinnerTheme" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/admin_add_court_sports_spinner"
+            android:backgroundTint="@android:color/holo_green_dark"
+
+            android:theme="@style/spinnerTheme" />
 
     </LinearLayout>
 
@@ -34,39 +35,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="24sp"
-        android:text="Radno vrijeme: "/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:textSize="15sp"
-            android:text="  od "/>
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="24sp"
+            android:text="Naziv terena: "/>
 
         <EditText
-            android:layout_height="wrap_content"
-            android:layout_width="30sp"
-            android:ems="10"
-            android:inputType="number" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:textSize="15sp"
-            android:text="do "/>
-
-        <EditText
-            android:layout_width="30sp"
-            android:layout_height="wrap_content"
+            android:id="@+id/admin_add_court_court_name"
             android:ems="10"
-            android:inputType="number" />
+            android:textSize="24sp"/>
 
     </LinearLayout>
 
@@ -75,18 +57,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="24sp"
-        android:text="Cijena po satu: "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="24sp"
+            android:text="Cijena po satu: "/>
 
-    <EditText
-        android:layout_width="50sp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" />
+        <EditText
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:id="@+id/admin_add_court_price"
+            android:ems="10"
+            android:inputType="number" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -100,6 +83,7 @@
 
     <Button
         android:text="Dodaj teren"
+        android:id="@+id/admin_add_court_confirm_btn"
         android:background="@drawable/button_style"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"

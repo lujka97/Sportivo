@@ -8,15 +8,22 @@ public class Court {
     private int sportId;
     private int companyId;
     private Company company;
+    private int price;
 
-    public int getCourtId() {
-        return courtId;
+    public Court(String name, int sportId, int companyId, int price){
+        this.courtName = name;
+        this.sportId = sportId;
+        this.companyId = companyId;
+        this.price = price;
     }
 
-    public String getCourtName(){
-        return courtName;
+    public Court(){
+
     }
 
+    public int getCourtId() { return courtId; }
+    public String getCourtName(){ return courtName; }
     public Company getCompany() { return company; }
     public int getSportId() { return sportId ;}
+    public int getPrice() { return price; }
 }

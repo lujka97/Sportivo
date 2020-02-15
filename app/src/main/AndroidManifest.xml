@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".time_screen.TimeSelect"></activity>
+        <activity android:name=".newuser_screen.CompanyRegistration"/>
+        <activity android:name=".time_screen.TimeSelect"/>
         <activity
             android:name=".login_screen.MainActivity"
             android:label="@string/title_activity_main"
@@ -30,6 +31,8 @@
         <activity android:name=".time_screen.DateSelect" />
         <activity android:name=".newuser_screen.NewUser" />
         <activity android:name=".reservationbyhour_screen.MainActivity" />
+        <activity android:name=".admin_screen.AdminMainActivity"/>
+        <activity android:name=".admin_screen.AdminAddCourt"/>
     </application>
 
 </manifest>

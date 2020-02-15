@@ -102,7 +102,7 @@ public class MyExpanableListViewAdapter extends BaseExpandableListAdapter {
 
         try{
             time.setText(ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition).getTimeOfDay());
-            price.setText(ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition).getPrice());
+            price.setText(ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition).getPriceString());
         }catch (Error e){
             Log.e("blabla", e.toString());
         }

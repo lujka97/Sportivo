@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<TimeSlot> reservedSlots = getAllReserved();
 
         for ( TimeSlot slot : reservedSlots) {
-            availableSlots.remove(new TimeSlot(slot.getStartsHour(), slot.getStartsMinutes(), slot.getEndsHour(), slot.getEndsMinutes(), slot.getCourtId(), 30));
+            availableSlots.remove(new TimeSlot(slot.getStartsHour(), slot.getStartsMinutes(), slot.getEndsHour(), slot.getEndsMinutes(), slot.getCourtId(), slot.getPrice()));
         }
 
         Map<String, ArrayList<TimeSlot>> availableSlotsMap = new HashMap<>();
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (Court court : ReservationDataStorage.courts){
             for(int i=8; i<=23; i++){
-                slots.add(new TimeSlot(i, 0, i+1, 0, court.getCourtId(), 30));
+                slots.add(new TimeSlot(i, 0, i+1, 0, court.getCourtId(), court.getPrice()));
             }
         }
 
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (Reservation reservation : ReservationDataStorage.reservations){
             calendar.setTime(reservation.getStartTime());
-            reserved.add(new TimeSlot(calendar.get(Calendar.HOUR_OF_DAY), 0, calendar.get(Calendar.HOUR_OF_DAY)+1, 0, reservation.getCourtId(), 30));
+            reserved.add(new TimeSlot(calendar.get(Calendar.HOUR_OF_DAY), 0, calendar.get(Calendar.HOUR_OF_DAY)+1, 0, reservation.getCourtId(), reservation.getCourt().getPrice()));
         }
 
         return reserved;

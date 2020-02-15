@@ -56,9 +56,11 @@ public class TimeSlot {
         return String.format("%02d", endsHour) + ":" + String.format("%02d", endsMinutes) + ":00";
     }
 
-    public String getPrice(){
+    public String getPriceString(){
         return this.price + "kn";
     }
+
+    public int getPrice() { return this.price; }
 
     public int hashCode() {
         final int prime = 31;
