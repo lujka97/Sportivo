@@ -20,7 +20,6 @@ public class TimeSelect extends AppCompatActivity {
 
     Button confirmTime;
     NumberPicker numpick;
-    TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,6 @@ public class TimeSelect extends AppCompatActivity {
 
         confirmTime = (Button) findViewById(R.id.confirmTime_btn);
         numpick = (NumberPicker) findViewById(R.id.numpick);
-        test = (TextView) findViewById(R.id.test);
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
@@ -57,7 +55,6 @@ public class TimeSelect extends AppCompatActivity {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 
-                test.setText("Ovo je ura "+newVal);
                 ReservationDataStorage.setTime(getApplicationContext(), newVal, ReservationDataStorage.getMinute(), ReservationDataStorage.getSecond());
             }
         });

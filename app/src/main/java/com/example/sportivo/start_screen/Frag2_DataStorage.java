@@ -33,7 +33,7 @@ public class Frag2_DataStorage {
 
     public static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 
-    public static void fillData(final Context context, final Frag2_Adapter adapter) {
+    public static void fillData(final Context context) {
 
         String url = context.getString(R.string.baseURL) + context.getString(R.string.reservationsURL) + "getMy";
 
@@ -48,7 +48,7 @@ public class Frag2_DataStorage {
                 Type type = new TypeToken<List<Reservation>>(){}.getType();
                 reservations = gson.fromJson(response.toString(), type);
 
-                adapter.notifyDataSetChanged();
+                Frag2.reservationsAdapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {
             @Override

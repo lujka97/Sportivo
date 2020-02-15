@@ -16,6 +16,7 @@ public class Frag2 extends Fragment {
 
     private View root;
     ListView my_reservations_list;
+    public static Frag2_Adapter reservationsAdapter;
 
     @Nullable
     @Override
@@ -24,8 +25,8 @@ public class Frag2 extends Fragment {
 
         my_reservations_list = (ListView) root.findViewById(R.id.my_reservations_list_view);
 
-        Frag2_Adapter reservationsAdapter = new Frag2_Adapter(root.getContext());
-        Frag2_DataStorage.fillData(root.getContext(), reservationsAdapter);
+        reservationsAdapter = new Frag2_Adapter(root.getContext());
+        Frag2_DataStorage.fillData(root.getContext());
         my_reservations_list.setAdapter(reservationsAdapter);
 
         return root;
