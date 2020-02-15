@@ -28,6 +28,8 @@ public class DateSelect extends AppCompatActivity {
         datePicker = (DatePicker) findViewById(R.id.datePicker);
         confimDate_btn = (Button) findViewById(R.id.confirmDate_btn);
 
+        datePicker.setMinDate(System.currentTimeMillis() - 1000);
+
         confimDate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

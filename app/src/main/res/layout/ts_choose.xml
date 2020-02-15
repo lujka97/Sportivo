@@ -17,4 +17,25 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal" />
 
+    <Button
+        android:text="Potvrdi"
+        android:background="@drawable/button_style"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirmTime_btn"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Izaberi sat"
+        android:id="@+id/test"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="17sp" />
+
 </LinearLayout>

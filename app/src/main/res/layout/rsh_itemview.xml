@@ -24,7 +24,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_dark"
         android:text="Rezerviraj"
+        android:textColor="@android:color/white"
         android:layout_margin="5dp"
         android:layout_alignParentRight="true"
         android:id="@+id/resByH_btn"/>

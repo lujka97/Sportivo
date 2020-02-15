@@ -7,7 +7,7 @@
     <string name="admin_tab_text_add_a_reservation">Dodaj rezervaciju</string>
     <string name="title_activity_reservation2">Reservation2</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="baseURL">http://192.168.1.103:5000/</string>
+    <string name="baseURL">http://192.168.43.73:5000/</string>
     <string name="userURL">api/user/</string>
     <string name="sportsURL">api/sport/</string>
     <string name="companiesURL">api/company/</string>

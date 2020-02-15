@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -15,35 +16,22 @@ import com.example.sportivo.ReservationDataStorage;
 public class TimeSelect extends AppCompatActivity {
 
     Button confirmTime;
-    TextView plus, minus;
-    TextView timePicker;
+    NumberPicker numpick;
+    TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_time_select);
+        setContentView(R.layout.ts_choose);
 
         confirmTime = (Button) findViewById(R.id.confirmTime_btn);
-        plus = (TextView) findViewById(R.id.plus);
-        minus = (TextView) findViewById(R.id.minus);
-        timePicker = (TextView) findViewById(R.id.timePicker);
+        numpick = (NumberPicker) findViewById(R.id.numpick);
+        test = (TextView) findViewById(R.id.test);
 
-        int hour = Integer.parseInt(timePicker.getText().toString());
-        ReservationDataStorage.setTime(getApplicationContext(), hour, 0 ,0);
+        numpick.setMinValue(0);
+        numpick.setMaxValue(23);
 
-        plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addToHour();
-            }
-        });
-
-        minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                subtractFromHour();
-            }
-        });
+        ReservationDataStorage.setTime(getApplicationContext(),numpick.getValue() , 0 ,0);
 
         confirmTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,23 +39,16 @@ public class TimeSelect extends AppCompatActivity {
                 finish();
             }
         });
+
+        numpick.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+
+                test.setText("Ovo je ura "+newVal);
+                ReservationDataStorage.setTime(getApplicationContext(), newVal, ReservationDataStorage.getMinute(), ReservationDataStorage.getSecond());
+            }
+        });
+
     }
 
-    private void subtractFromHour() {
-        int hour = Integer.parseInt(timePicker.getText().toString());
-
-        if(hour > 0){
-            timePicker.setText(String.valueOf(--hour));
-            ReservationDataStorage.setTime(getApplicationContext(), hour, ReservationDataStorage.getMinute(), ReservationDataStorage.getSecond());
-        }
-    }
-
-    private void addToHour() {
-        int hour = Integer.parseInt(timePicker.getText().toString());
-
-        if(hour < 23){
-            timePicker.setText(String.valueOf(++hour));
-            ReservationDataStorage.setTime(getApplicationContext(), hour, ReservationDataStorage.getMinute(), ReservationDataStorage.getSecond());
-        }
-    }
 }

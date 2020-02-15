@@ -24,6 +24,7 @@
             android:background="@android:color/transparent"
             android:layout_gravity="center"
             android:gravity="center"
+            android:text="Sport"
             android:textSize="25sp"
             android:layout_weight="1"/>
 
