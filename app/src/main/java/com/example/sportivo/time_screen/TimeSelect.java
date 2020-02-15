@@ -13,6 +13,9 @@ import android.widget.TimePicker;
 import com.example.sportivo.R;
 import com.example.sportivo.ReservationDataStorage;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class TimeSelect extends AppCompatActivity {
 
     Button confirmTime;
@@ -28,7 +31,17 @@ public class TimeSelect extends AppCompatActivity {
         numpick = (NumberPicker) findViewById(R.id.numpick);
         test = (TextView) findViewById(R.id.test);
 
-        numpick.setMinValue(0);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+
+        if(cal.get(Calendar.YEAR) == ReservationDataStorage.getYear() &&
+                cal.get(Calendar.MONTH) == (ReservationDataStorage.getMonth()-1) &&
+                cal.get(Calendar.DAY_OF_MONTH) == ReservationDataStorage.getDay()){
+            numpick.setMinValue(cal.get(Calendar.HOUR_OF_DAY)+1);
+        }else{
+            numpick.setMinValue(0);
+        }
+
         numpick.setMaxValue(23);
 
         ReservationDataStorage.setTime(getApplicationContext(),numpick.getValue() , 0 ,0);
