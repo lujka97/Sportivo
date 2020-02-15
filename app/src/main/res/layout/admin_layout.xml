@@ -5,11 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/admin_reservations_list_view"/>
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,18 +17,26 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
             app:srcCompat="@android:drawable/ic_input_add"
+            app:fabSize="mini"
             android:tint="@android:color/white"
             app:backgroundTint="@android:color/holo_green_dark" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="15sp"
             android:layout_gravity="center"
             android:textColor="@android:color/holo_green_dark"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:text="Dodaj novi teren "/>
 
     </LinearLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/admin_reservations_list_view"/>
+
+
 
 </LinearLayout>
