@@ -24,6 +24,7 @@ public class Court {
     public int getCourtId() { return courtId; }
     public String getCourtName(){ return courtName; }
     public Company getCompany() { return company; }
+    public int getCompanyId() { return companyId; }
     public int getSportId() { return sportId ;}
     public int getPrice() { return price; }
 }

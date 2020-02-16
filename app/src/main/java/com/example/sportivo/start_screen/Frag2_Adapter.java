@@ -17,6 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.sportivo.CalendarService;
 import com.example.sportivo.R;
 
 import com.example.sportivo.Reservation;
@@ -84,7 +85,7 @@ public class Frag2_Adapter extends BaseAdapter {
         return view;
     }
 
-    private void deleteReservation(final Context context, int reservationId){
+    private void deleteReservation(final Context context, final int reservationId){
 
         String url = context.getString(R.string.baseURL) + context.getString(R.string.reservationsURL) + "delete?reservationId=" + reservationId;
 
@@ -95,7 +96,10 @@ public class Frag2_Adapter extends BaseAdapter {
                 if (response.equals("false")){
                     Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(context, "Reservation deleted", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Reservation deleted", Toast.LENGTH_SHORT).show();
+
+                    Reservation reservation = Frag2_DataStorage.getReservationById(reservationId);
+                    CalendarService.removeEvent(context, reservation);
                     Frag2_DataStorage.fillData(context);
                 }
             }

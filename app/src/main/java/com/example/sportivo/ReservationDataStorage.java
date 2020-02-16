@@ -1,7 +1,13 @@
 package com.example.sportivo;
 
+import android.Manifest;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.provider.CalendarContract;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -11,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.sportivo.admin_screen.AdminMainActivity;
 import com.example.sportivo.objects_screen.Company;
+import com.example.sportivo.reservation_screen.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +28,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class ReservationDataStorage {
 
@@ -104,6 +114,7 @@ public class ReservationDataStorage {
                     if(ReservationDataStorage.isAdmin){
                         intent = new Intent(context, AdminMainActivity.class);
                     }else {
+                        CalendarService.addEventToCalendar(context);
                         intent = new Intent(context, com.example.sportivo.start_screen.MainActivity.class);
                     }
 

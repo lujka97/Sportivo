@@ -117,8 +117,8 @@ public class MyExpandableListViewAdapterResByHour extends BaseExpandableListAdap
         try{
             courtName.setText(courtSelected.getCourtName());
             price.setText(ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition).getPriceString());
-        }catch (Error e){
-
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
         return convertView;

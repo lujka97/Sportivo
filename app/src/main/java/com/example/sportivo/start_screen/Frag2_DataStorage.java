@@ -66,7 +66,15 @@ public class Frag2_DataStorage {
         };
 
         Singleton.getInstance(context).addToRequestQueue(getReservations);
+    }
 
+    public static Reservation getReservationById(int id){
+        for (Reservation reservation : reservations){
+            if(reservation.getReservationId() == id){
+                return reservation;
+            }
+        }
+        return null;
     }
 }
 

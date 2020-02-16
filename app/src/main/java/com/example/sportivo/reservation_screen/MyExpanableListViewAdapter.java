@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.sportivo.R;
 import com.example.sportivo.ReservationDataStorage;
+import com.example.sportivo.TimeSlot;
 
 import org.w3c.dom.Text;
 
@@ -75,8 +76,8 @@ public class MyExpanableListViewAdapter extends BaseExpandableListAdapter {
         try{
             courtName_tv.setText(ReservationDataStorage.courts.get(groupPosition).getCourtName());
 
-        }catch (Error e){
-
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
         return convertView;
@@ -96,6 +97,8 @@ public class MyExpanableListViewAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
                 Log.i("blabla", groupPosition + "-" + childPosition);
+                TimeSlot time = ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition);
+                ReservationDataStorage.setTime(mContext, time.getStartsHour(), time.getStartsMinutes(), 0);
                 ReservationDataStorage.createReservation(mContext, groupPosition, childPosition);
             }
         });

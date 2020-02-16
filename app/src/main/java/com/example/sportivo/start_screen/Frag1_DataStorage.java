@@ -61,5 +61,14 @@ public class Frag1_DataStorage {
             Singleton.getInstance(context).addToRequestQueue(getSports);
 
         }
+
+        public static Frag1_Sports getSportById(int id){
+            for (Frag1_Sports sport : sports){
+                if(sport.getId() == id){
+                    return sport;
+                }
+            }
+            return null;
+        }
     }
 

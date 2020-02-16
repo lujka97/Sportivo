@@ -41,12 +41,10 @@ public class DataStorage {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, "Error retrieving data from server", Toast.LENGTH_SHORT);
+                Toast.makeText(context, "Error retrieving data from server", Toast.LENGTH_SHORT).show();
             }
         });
 
         Singleton.getInstance(context).addToRequestQueue(getCompanies);
     }
-
-    private static String[] cageball = {"Športski Centar Mačak", "Cageball Winner", "SRC Kopilica", "Cageball Penal"};
 }
