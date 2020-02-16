@@ -1,8 +1,6 @@
 package com.example.sportivo.admin_screen;
 
 import android.content.Context;
-import android.os.TestLooperManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.sportivo.R;
-import com.example.sportivo.Reservation;
-import com.example.sportivo.objects_screen.Company;
-import com.example.sportivo.objects_screen.DataStorage;
+import com.example.sportivo.Models.Reservation;
+
+import java.text.SimpleDateFormat;
 
 public class AdminReservationsAdapter extends BaseAdapter {
 
@@ -41,14 +39,14 @@ public class AdminReservationsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null)
-            convertView = mInflater.inflate(R.layout.admin_reservation_item_view, parent, false);
+            convertView = mInflater.inflate(R.layout.admin_reservations_fragment_item_view, parent, false);
 
         final TextView name = (TextView) convertView.findViewById(R.id.admin_reservations_view_court_name);
         final TextView time = (TextView) convertView.findViewById(R.id.admin_reservation_view_DateTime);
 
         final Reservation reservation = AdminReservationsDataStorage.reservations.get(position);
         name.setText(reservation.getCourt().getCourtName());
-        time.setText(reservation.getStartTime().toString());
+        time.setText(SimpleDateFormat.getTimeInstance().format(reservation.getStartTime()));
 
         return convertView;
     }

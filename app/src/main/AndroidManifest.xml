@@ -15,10 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".newuser_screen.CompanyRegistration"/>
-        <activity android:name=".time_screen.TimeSelect"/>
+        <activity android:name=".registration_screen.CompanyRegistrationActivity"/>
+        <activity android:name=".time_screen.TimeSelectActivity"/>
         <activity
-            android:name=".login_screen.MainActivity"
+            android:name=".login_screen.LoginActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -28,14 +28,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".start_screen.MainActivity" />
-        <activity android:name=".objects_screen.Objects_main" />
-        <activity android:name=".choice_screen.Choice" />
-        <activity android:name=".reservation_screen.MainActivity" />
-        <activity android:name=".time_screen.DateSelect" />
-        <activity android:name=".newuser_screen.NewUser" />
-        <activity android:name=".reservationbyhour_screen.MainActivity" />
+        <activity android:name=".company_select_screen.CompanySelectActivity" />
+        <activity android:name=".choice_screen.ReservationTypeChoiceActivity" />
+        <activity android:name=".reservation_screen.ReservationActivity" />
+        <activity android:name=".time_screen.DateSelectActivity" />
+        <activity android:name=".registration_screen.RegistrationActivity" />
+        <activity android:name=".reservationbyhour_screen.ReservationByHourActivity" />
         <activity android:name=".admin_screen.AdminMainActivity"/>
-        <activity android:name=".admin_screen.AdminAddCourt"/>
+        <activity android:name=".admin_screen.AdminAddCourtActivity"/>
     </application>
 
 </manifest>

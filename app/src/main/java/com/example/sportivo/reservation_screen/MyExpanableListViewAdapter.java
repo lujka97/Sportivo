@@ -1,7 +1,6 @@
 package com.example.sportivo.reservation_screen;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,16 +8,10 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sportivo.R;
-import com.example.sportivo.ReservationDataStorage;
-import com.example.sportivo.TimeSlot;
-
-import org.w3c.dom.Text;
-
-import java.io.FileInputStream;
-import java.util.zip.Inflater;
+import com.example.sportivo.Services.ReservationService;
+import com.example.sportivo.Models.TimeSlot;
 
 public class MyExpanableListViewAdapter extends BaseExpandableListAdapter {
 
@@ -32,12 +25,12 @@ public class MyExpanableListViewAdapter extends BaseExpandableListAdapter {
     }
     @Override
     public int getGroupCount() {
-        return ReservationDataStorage.availableReservations.size();
+        return ReservationService.availableReservations.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return ReservationDataStorage.availableReservations.get(groupPosition).size();
+        return ReservationService.availableReservations.get(groupPosition).size();
     }
 
     @Override
@@ -47,7 +40,7 @@ public class MyExpanableListViewAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition);
+        return ReservationService.availableReservations.get(groupPosition).get(childPosition);
     }
 
     @Override
@@ -69,12 +62,12 @@ public class MyExpanableListViewAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 
         if (convertView == null)
-            convertView = mInflater.inflate(R.layout.rs_baseview, parent, false);
+            convertView = mInflater.inflate(R.layout.reservation_list_group_item, parent, false);
 
         TextView courtName_tv = (TextView) convertView.findViewById(R.id.courtName_tv);
 
         try{
-            courtName_tv.setText(ReservationDataStorage.courts.get(groupPosition).getCourtName());
+            courtName_tv.setText(ReservationService.courts.get(groupPosition).getCourtName());
 
         }catch (Exception e){
             e.printStackTrace();
@@ -87,7 +80,7 @@ public class MyExpanableListViewAdapter extends BaseExpandableListAdapter {
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
         if (convertView == null)
-            convertView = mInflater.inflate(R.layout.rs_itemview, parent, false);
+            convertView = mInflater.inflate(R.layout.reservation_list_child_item, parent, false);
 
         TextView time = (TextView) convertView.findViewById(R.id.res_time_tv);
         TextView price = (TextView) convertView.findViewById(R.id.res_price_tv);
@@ -97,17 +90,17 @@ public class MyExpanableListViewAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
                 Log.i("blabla", groupPosition + "-" + childPosition);
-                TimeSlot time = ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition);
-                ReservationDataStorage.setTime(mContext, time.getStartsHour(), time.getStartsMinutes(), 0);
-                ReservationDataStorage.createReservation(mContext, groupPosition, childPosition);
+                TimeSlot time = ReservationService.availableReservations.get(groupPosition).get(childPosition);
+                ReservationService.setTime(mContext, time.getStartsHour(), time.getStartsMinutes(), 0);
+                ReservationService.createReservation(mContext, groupPosition, childPosition);
             }
         });
 
         try{
-            time.setText(ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition).getTimeOfDay());
-            price.setText(ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition).getPriceString());
-        }catch (Error e){
-            Log.e("blabla", e.toString());
+            time.setText(ReservationService.availableReservations.get(groupPosition).get(childPosition).getTimeOfDay());
+            price.setText(ReservationService.availableReservations.get(groupPosition).get(childPosition).getPriceString());
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
 

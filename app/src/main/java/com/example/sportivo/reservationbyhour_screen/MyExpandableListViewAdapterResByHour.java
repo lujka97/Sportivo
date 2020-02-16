@@ -9,11 +9,10 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.sportivo.Court;
+import com.example.sportivo.Models.Court;
 import com.example.sportivo.R;
-import com.example.sportivo.Reservation;
-import com.example.sportivo.ReservationDataStorage;
-import com.example.sportivo.objects_screen.Company;
+import com.example.sportivo.Services.ReservationService;
+import com.example.sportivo.Models.Company;
 
 public class MyExpandableListViewAdapterResByHour extends BaseExpandableListAdapter {
 
@@ -27,22 +26,22 @@ public class MyExpandableListViewAdapterResByHour extends BaseExpandableListAdap
     }
     @Override
     public int getGroupCount() {
-        return ReservationDataStorage.availableReservations.size();
+        return ReservationService.availableReservations.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return ReservationDataStorage.availableReservations.get(groupPosition).size();
+        return ReservationService.availableReservations.get(groupPosition).size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return ReservationDataStorage.availableReservations.get(groupPosition);
+        return ReservationService.availableReservations.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition);
+        return ReservationService.availableReservations.get(groupPosition).get(childPosition);
     }
 
     @Override
@@ -63,24 +62,24 @@ public class MyExpandableListViewAdapterResByHour extends BaseExpandableListAdap
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         if (convertView == null)
-            convertView = mInflater.inflate(R.layout.rsh_baseview, parent, false);
+            convertView = mInflater.inflate(R.layout.reservation_by_hour_list_group_item, parent, false);
 
         TextView companyName_tv = (TextView) convertView.findViewById(R.id.companyName_tv);
 
         try{
-            int id = ReservationDataStorage.availableReservations.get(groupPosition).get(0).getCourtId();
-            int companyId = MainActivity.getCompanyIdFromCourtID(id);
+            int id = ReservationService.availableReservations.get(groupPosition).get(0).getCourtId();
+            int companyId = ReservationByHourActivity.getCompanyIdFromCourtID(id);
 
             Company company = new Company(-1, "");
-            for (Company c : ReservationDataStorage.companies){
+            for (Company c : ReservationService.companies){
                 if (c.getId() == companyId){
                     company = c;
                 }
             }
             companyName_tv.setText(company.getName());
 
-        }catch (Error e){
-
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
 
         return convertView;
@@ -89,7 +88,7 @@ public class MyExpandableListViewAdapterResByHour extends BaseExpandableListAdap
     @Override
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         if (convertView == null)
-            convertView = mInflater.inflate(R.layout.rsh_itemview, parent, false);
+            convertView = mInflater.inflate(R.layout.reservation_by_hour_list_child_item, parent, false);
 
         TextView courtName = (TextView) convertView.findViewById(R.id.courtNameResByH_tv);
         TextView price = (TextView) convertView.findViewById(R.id.resByH_price_tv);
@@ -99,13 +98,13 @@ public class MyExpandableListViewAdapterResByHour extends BaseExpandableListAdap
             @Override
             public void onClick(View v) {
                 Log.i("blabla", groupPosition + "-" + childPosition);
-                ReservationDataStorage.createReservation(mContext, groupPosition, childPosition);
+                ReservationService.createReservation(mContext, groupPosition, childPosition);
             }
         });
 
-        int courtId = ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition).getCourtId();
+        int courtId = ReservationService.availableReservations.get(groupPosition).get(childPosition).getCourtId();
         Court courtSelected = new Court();
-        for (Company company : ReservationDataStorage.companies){
+        for (Company company : ReservationService.companies){
             for (Court court : company.getCourts()){
                 if(court.getCourtId() == courtId){
                     courtSelected = court;
@@ -116,7 +115,7 @@ public class MyExpandableListViewAdapterResByHour extends BaseExpandableListAdap
 
         try{
             courtName.setText(courtSelected.getCourtName());
-            price.setText(ReservationDataStorage.availableReservations.get(groupPosition).get(childPosition).getPriceString());
+            price.setText(ReservationService.availableReservations.get(groupPosition).get(childPosition).getPriceString());
         }catch (Exception e){
             e.printStackTrace();
         }

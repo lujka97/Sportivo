@@ -1,6 +1,5 @@
 package com.example.sportivo.admin_screen;
 
-import android.app.admin.DelegatedAdminReceiver;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
@@ -10,9 +9,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.sportivo.R;
-import com.example.sportivo.Reservation;
-import com.example.sportivo.Singleton;
-import com.example.sportivo.start_screen.Frag1_Sports;
+import com.example.sportivo.Models.Reservation;
+import com.example.sportivo.Services.Singleton;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -29,10 +27,11 @@ public class AdminReservationsDataStorage {
 
     public static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
     public static int companyId=-1;
+    public static Date date;
 
     public static void fillData(final Context context, final AdminReservationsAdapter adapter) {
         Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date());
+        cal.setTime(date);
 
         String url = context.getString(R.string.baseURL) + context.getString(R.string.reservationsURL) + "get?companyId=" +
                 companyId + "&date=" + cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1)  + "-" + cal.get(Calendar.DAY_OF_MONTH);

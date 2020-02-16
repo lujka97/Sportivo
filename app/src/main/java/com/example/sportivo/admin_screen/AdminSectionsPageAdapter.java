@@ -3,7 +3,7 @@ package com.example.sportivo.admin_screen;
 import android.content.Context;
 
 import com.example.sportivo.R;
-import com.example.sportivo.start_screen.Frag1;
+import com.example.sportivo.start_screen.SportsListFragment;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -30,7 +30,7 @@ public class AdminSectionsPageAdapter extends FragmentPagerAdapter {
                     fragment=new AdminViewReservationsFragment();
                     break;
                 case 1:
-                    fragment=new Frag1();
+                    fragment=new SportsListFragment();
                     break;
             }
             return fragment;
