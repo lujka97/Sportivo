@@ -18,9 +18,7 @@
         <activity android:name=".registration_screen.CompanyRegistrationActivity"/>
         <activity android:name=".time_screen.TimeSelectActivity"/>
         <activity
-            android:name=".login_screen.LoginActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".login_screen.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

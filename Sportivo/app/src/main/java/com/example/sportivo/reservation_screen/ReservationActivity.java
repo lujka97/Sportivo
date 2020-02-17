@@ -33,6 +33,7 @@ import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -130,8 +131,16 @@ public class ReservationActivity extends AppCompatActivity {
     private ArrayList<TimeSlot> getAllSlots(){
         ArrayList<TimeSlot> slots = new ArrayList<>();
 
+        int opensHour = ReservationService.selectedCompany.getOpens();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        if(cal.get(Calendar.YEAR) == ReservationService.getYear() && cal.get(Calendar.MONTH) == ReservationService.getMonth() - 1
+                && cal.get(Calendar.DAY_OF_MONTH) == ReservationService.getDay() && cal.get(Calendar.HOUR_OF_DAY) > opensHour){
+            opensHour = cal.get(Calendar.HOUR_OF_DAY) + 1;
+
+        }
         for (Court court : ReservationService.courts){
-            for(int i=ReservationService.selectedCompany.getOpens(); i<=ReservationService.selectedCompany.getCloses()-ReservationService.getLength(); i++){
+            for(int i=opensHour; i<=ReservationService.selectedCompany.getCloses()-ReservationService.getLength(); i++){
                 slots.add(new TimeSlot(i, 0, i+ReservationService.getLength(), 0, court.getCourtId(), court.getPrice()));
             }
         }
@@ -166,15 +175,14 @@ public class ReservationActivity extends AppCompatActivity {
                 ReservationService.courts = gson.fromJson(response.toString(), type);
                 Map<String, ArrayList<TimeSlot>> availableSlots = getAvailableSlots();
 
+                expandableListAdapter.notifyDataSetInvalidated();
+                ReservationService.availableReservations.clear();
                 if(!availableSlots.isEmpty()){
-                    expandableListAdapter.notifyDataSetInvalidated();
-                    ReservationService.availableReservations.clear();
                     for (Map.Entry<String, ArrayList<TimeSlot>> entry : availableSlots.entrySet()){
                         ReservationService.availableReservations.add(entry.getValue());
                     }
-                    expandableListAdapter.notifyDataSetChanged();
-
                 }
+                expandableListAdapter.notifyDataSetChanged();
 
             }
         }, new Response.ErrorListener() {
