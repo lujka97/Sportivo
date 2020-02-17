@@ -42,4 +42,26 @@ public class CompanyService {
 
         Volley.newRequestQueue(context).add(getCompanies);
     }
+
+        public static void setCompany(final Context context, int id){
+                String url = context.getString(R.string.baseURL) + context.getString(R.string.companiesURL) + "getById?companyId=" + id;
+
+                JsonArrayRequest getCompanies = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                Gson gson = new Gson();
+                Type type = new TypeToken<List<Company>>(){}.getType();
+                CompanySelectDataStorage.companies = gson.fromJson(response.toString(), type);
+                ReservationService.selectedCompany = CompanySelectDataStorage.companies.get(0);
+                ReservationService.courts = ReservationService.selectedCompany.getCourts();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "Error retrieving data from server", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+                        Volley.newRequestQueue(context).add(getCompanies);
+            }
 }

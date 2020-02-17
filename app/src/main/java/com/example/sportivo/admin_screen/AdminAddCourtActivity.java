@@ -21,6 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sportivo.R;
 import com.example.sportivo.Models.Sport;
+import com.example.sportivo.Services.AuthTokenService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -30,7 +31,9 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AdminAddCourtActivity extends AppCompatActivity {
     private ArrayList<Sport> sports;
@@ -118,6 +121,14 @@ public class AdminAddCourtActivity extends AppCompatActivity {
 
             }
         }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String>  authParams = new HashMap<>();
+
+                authParams.put("Authorization", "Bearer " + AuthTokenService.getToken());
+                return authParams;
+            }
+
             @Override
             public byte[] getBody() throws AuthFailureError {
 

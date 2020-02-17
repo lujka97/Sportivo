@@ -1,6 +1,7 @@
 package com.example.sportivo.start_screen;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,7 @@ public class SportsListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ReservationService.sportId = SportsListFragmentDataStorage.sports.get(position).getId();
-
+                Log.i("blabla", "val " + ReservationService.sportId);
                 if(ReservationService.isAdmin){
                     ReservationService.companyId = AdminReservationsDataStorage.companyId;
                     Intent intent = new Intent(root.getContext(), ReservationActivity.class);

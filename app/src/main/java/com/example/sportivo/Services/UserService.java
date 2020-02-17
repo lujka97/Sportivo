@@ -41,6 +41,7 @@ public class UserService {
                         ReservationService.isAdmin = false;
                     }else{
                         AdminReservationsDataStorage.companyId=companyId;
+                        CompanyService.setCompany(context, companyId);
                         intent = new Intent(context.getApplicationContext(), AdminMainActivity.class);
                         ReservationService.isAdmin = true;
                     }
