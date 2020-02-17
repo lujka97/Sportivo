@@ -15,11 +15,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.sportivo.Models.Court;
 import com.example.sportivo.R;
 import com.example.sportivo.Models.Reservation;
 import com.example.sportivo.Services.ReservationService;
-import com.example.sportivo.Services.Singleton;
 import com.example.sportivo.Models.TimeSlot;
 import com.example.sportivo.Models.Company;
 import com.example.sportivo.time_screen.DateSelectActivity;
@@ -95,7 +95,8 @@ public class ReservationByHourActivity extends AppCompatActivity {
                 Log.i("blabla", error.toString());
             }
         });
-        Singleton.getInstance(getApplicationContext()).addToRequestQueue(getReservations);
+
+        Volley.newRequestQueue(getApplicationContext()).add(getReservations);
     }
 
     @Override
@@ -204,6 +205,7 @@ public class ReservationByHourActivity extends AppCompatActivity {
                 Log.i("blabla", error.toString());
             }
         });
-        Singleton.getInstance(getApplicationContext()).addToRequestQueue(getCompanies);
+
+        Volley.newRequestQueue(getApplicationContext()).add(getCompanies);
     }
 }

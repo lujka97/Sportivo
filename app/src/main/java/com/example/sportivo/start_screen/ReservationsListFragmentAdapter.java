@@ -1,7 +1,6 @@
 package com.example.sportivo.start_screen;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,23 +8,13 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.example.sportivo.Services.CalendarService;
 import com.example.sportivo.R;
 
 import com.example.sportivo.Models.Reservation;
 import com.example.sportivo.Services.ReservationService;
-import com.example.sportivo.Services.Singleton;
-import com.example.sportivo.Services.TokenManager;
 
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ReservationsListFragmentAdapter extends BaseAdapter {
 

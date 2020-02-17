@@ -15,13 +15,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.sportivo.Models.Court;
 import com.example.sportivo.R;
 import com.example.sportivo.Models.Reservation;
 import com.example.sportivo.Services.ReservationService;
-import com.example.sportivo.Services.Singleton;
 import com.example.sportivo.Models.TimeSlot;
-import com.example.sportivo.Services.TokenManager;
+import com.example.sportivo.Services.AuthTokenService;
 import com.example.sportivo.time_screen.DateSelectActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -70,7 +70,7 @@ public class ReservationActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        Log.i("blabla", "token: " + TokenManager.getToken());
+        Log.i("blabla", "token: " + AuthTokenService.getToken());
 
         Calendar cal = Calendar.getInstance();
         cal.set(ReservationService.getYear(), ReservationService.getMonth() - 1, ReservationService.getDay());
@@ -93,7 +93,8 @@ public class ReservationActivity extends AppCompatActivity {
                 Log.i("blabla", error.toString());
             }
         });
-        Singleton.getInstance(getApplicationContext()).addToRequestQueue(getReservations);
+
+        Volley.newRequestQueue(getApplicationContext()).add(getReservations);
     }
 
     @Override
@@ -118,7 +119,9 @@ public class ReservationActivity extends AppCompatActivity {
             if (availableSlotsMap.get(String.valueOf(courtId)) == null) {
                 availableSlotsMap.put(String.valueOf(courtId), new ArrayList<TimeSlot>());
             }
-            availableSlotsMap.get(String.valueOf(courtId)).add(ts);
+            try {
+                availableSlotsMap.get(String.valueOf(courtId)).add(ts);
+            }catch (Exception ex) { ex.printStackTrace(); }
         }
 
         return availableSlotsMap;
@@ -180,6 +183,7 @@ public class ReservationActivity extends AppCompatActivity {
                 Log.i("blabla", error.toString());
             }
         });
-        Singleton.getInstance(getApplicationContext()).addToRequestQueue(getCourts);
+
+        Volley.newRequestQueue(getApplicationContext()).add(getCourts);
     }
 }

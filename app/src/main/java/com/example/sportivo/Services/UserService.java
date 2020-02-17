@@ -11,6 +11,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.sportivo.R;
 import com.example.sportivo.admin_screen.AdminMainActivity;
 import com.example.sportivo.admin_screen.AdminReservationsDataStorage;
@@ -29,11 +30,11 @@ public class UserService {
                 //Toast.makeText(getApplicationContext(),response.toString(), Toast.LENGTH_LONG).show();
                 String token = response.optString("token", "failed to get token");
                 int companyId = response.optInt("companyId", -1);
-                TokenManager.setToken(token);
+                AuthTokenService.setToken(token);
                 Log.i("blabla", String.valueOf(companyId));
 
-                if(TokenManager.decodeToken(token)){
-                    //Toast.makeText(getApplicationContext(), TokenManager.getPayloadData("username"), Toast.LENGTH_LONG).show();
+                if(AuthTokenService.decodeToken(token)){
+                    //Toast.makeText(getApplicationContext(), AuthTokenService.getPayloadData("username"), Toast.LENGTH_LONG).show();
                     Intent intent;
                     if(companyId == -1) {
                         intent = new Intent(context.getApplicationContext(), com.example.sportivo.start_screen.MainActivity.class);
@@ -75,7 +76,7 @@ public class UserService {
             }
         };
 
-        Singleton.getInstance(context.getApplicationContext()).addToRequestQueue(loginRequest);
+        Volley.newRequestQueue(context).add(loginRequest);
     }
 
     public static void createUser(final Context context, final JSONObject user){
@@ -108,7 +109,7 @@ public class UserService {
             }
         };
 
-        Singleton.getInstance(context).addToRequestQueue(registerUser);
+        Volley.newRequestQueue(context).add(registerUser);
     }
 
     public static void createCompany(final Context context, final String companyName, final String userName, final String password, final int startHour, final int endHour){
@@ -163,6 +164,6 @@ public class UserService {
             }
         };
 
-        Singleton.getInstance(context.getApplicationContext()).addToRequestQueue(registerCompany);
+        Volley.newRequestQueue(context).add(registerCompany);
     }
 }

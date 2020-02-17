@@ -5,7 +5,7 @@ import com.google.common.io.BaseEncoding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TokenManager {
+public class AuthTokenService {
 
     private static JSONObject payloadJson, headerJson, signatureJson;
     private static String token;
@@ -18,9 +18,9 @@ public class TokenManager {
         //String tokenSignature = new String(BaseEncoding.base64Url().decode(parts[2]));
 
         try{
-            TokenManager.headerJson = new JSONObject(tokenHeader);
-            TokenManager.payloadJson = new JSONObject(tokenPayload);
-            //TokenManager.signatureJson = new JSONObject(tokenSignature);
+            AuthTokenService.headerJson = new JSONObject(tokenHeader);
+            AuthTokenService.payloadJson = new JSONObject(tokenPayload);
+            //AuthTokenService.signatureJson = new JSONObject(tokenSignature);
         } catch(JSONException e) {
             e.printStackTrace();
             return false;
@@ -30,19 +30,19 @@ public class TokenManager {
     }
 
     public static JSONObject getPayloadData(){
-        return TokenManager.payloadJson;
+        return AuthTokenService.payloadJson;
     }
 
     public static String getPayloadData(String name){
-        return TokenManager.payloadJson.optString(name, "failureToGet" + name);
+        return AuthTokenService.payloadJson.optString(name, "failureToGet" + name);
     }
 
     public static void setToken(String token){
-        TokenManager.token = token;
+        AuthTokenService.token = token;
     }
 
     public static String getToken(){
-        return TokenManager.token;
+        return AuthTokenService.token;
     }
 
 }

@@ -11,13 +11,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.sportivo.Models.Company;
 import com.example.sportivo.Models.Court;
 import com.example.sportivo.Models.Reservation;
 import com.example.sportivo.Models.TimeSlot;
 import com.example.sportivo.R;
 import com.example.sportivo.admin_screen.AdminMainActivity;
-import com.example.sportivo.start_screen.ReservationsListFragment;
 import com.example.sportivo.start_screen.ReservationsListFragmentAdapter;
 import com.example.sportivo.start_screen.ReservationsListFragmentDataStorage;
 import com.google.gson.Gson;
@@ -145,7 +145,7 @@ public class ReservationService {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  authParams = new HashMap<>();
 
-                authParams.put("Authorization", "Bearer " + TokenManager.getToken());
+                authParams.put("Authorization", "Bearer " + AuthTokenService.getToken());
                 return authParams;
             }
 
@@ -165,7 +165,7 @@ public class ReservationService {
             }
         };
 
-        Singleton.getInstance(context).addToRequestQueue(createReservation);
+        Volley.newRequestQueue(context).add(createReservation);
     }
 
     public static void deleteReservation(final Context context, final Reservation reservation, final ReservationsListFragmentAdapter adapter){
@@ -197,13 +197,13 @@ public class ReservationService {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  authParams = new HashMap<>();
 
-                authParams.put("Authorization", "Bearer " + TokenManager.getToken());
+                authParams.put("Authorization", "Bearer " + AuthTokenService.getToken());
                 return authParams;
             }
 
         };
 
-        Singleton.getInstance(context).addToRequestQueue(deleteReservation);
+        Volley.newRequestQueue(context).add(deleteReservation);
     }
 
     public static void setReservations(final Context context, final ReservationsListFragmentAdapter adapter){
@@ -229,11 +229,11 @@ public class ReservationService {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  authParams = new HashMap<>();
 
-                authParams.put("Authorization", "Bearer " + TokenManager.getToken());
+                authParams.put("Authorization", "Bearer " + AuthTokenService.getToken());
                 return authParams;
             }
         };
 
-        Singleton.getInstance(context).addToRequestQueue(getReservations);
+        Volley.newRequestQueue(context).add(getReservations);
     }
 }

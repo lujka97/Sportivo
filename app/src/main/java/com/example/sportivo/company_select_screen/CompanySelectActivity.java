@@ -29,8 +29,8 @@ public class CompanySelectActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i("blabla", "item clicked");
-                ReservationService.companyId = CompanySelectDataStorage.companies.get(position).getId();
                 ReservationService.selectedCompany = CompanySelectDataStorage.companies.get(position);
+                ReservationService.companyId = ReservationService.selectedCompany.getCompanyId();
                 Intent intent = new Intent(getApplicationContext(), ReservationActivity.class);
                 startActivity(intent);
             }

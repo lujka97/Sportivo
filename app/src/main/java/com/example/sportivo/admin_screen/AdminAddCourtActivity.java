@@ -18,8 +18,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.sportivo.R;
-import com.example.sportivo.Services.Singleton;
 import com.example.sportivo.Models.Sport;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -96,7 +96,7 @@ public class AdminAddCourtActivity extends AppCompatActivity {
             }
         });
 
-        Singleton.getInstance(context).addToRequestQueue(getSports);
+        Volley.newRequestQueue(context).add(getSports);
     }
 
     private void createCourt(final JSONObject court){
@@ -130,7 +130,7 @@ public class AdminAddCourtActivity extends AppCompatActivity {
             }
         };
 
-        Singleton.getInstance(getApplicationContext()).addToRequestQueue(createCourt);
+        Volley.newRequestQueue(getApplicationContext()).add(createCourt);
     }
 
     private boolean CheckAllRequiredFieldsFilled(){

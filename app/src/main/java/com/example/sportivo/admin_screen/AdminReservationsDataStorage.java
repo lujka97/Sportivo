@@ -8,9 +8,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.sportivo.R;
 import com.example.sportivo.Models.Reservation;
-import com.example.sportivo.Services.Singleton;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -53,6 +53,6 @@ public class AdminReservationsDataStorage {
             }
         });
 
-        Singleton.getInstance(context).addToRequestQueue(getSports);
+        Volley.newRequestQueue(context).add(getSports);
     }
 }
